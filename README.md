@@ -29,3 +29,11 @@
 - BCE loss에서 발생하는 gradient vanishing가 L2 loss에는 생기지 않기때문에 stable한 모델링 가능
 
 ![](https://user-images.githubusercontent.com/37301677/84801102-b5ec2d00-b039-11ea-9b4c-309dc37adff5.png)
+
+## 4. CGAN
+- Conditional Generative Adversarial Networks
+- Generator 모델에 조건을 정의
+- latent vector에 생성모델에 대한 조건(MNIST 데이터셋의 경우 0~9까지의 값)을 input으로 함
+- Discriminator는 조건에 맞는 이미지인지를 판단함(GAN의 경우 이미지가 진짜/가짜 인지만 구분)
+
+![](https://camo.githubusercontent.com/c28a6315c9c2f6bcad02c9e0e99f8ae6ff9403ef/68747470733a2f2f626c6f672e6b616b616f63646e2e6e65742f646e2f434d5950652f627471786a3047344e68342f727a57524653307a7735344c68314d79685a3437414b2f696d672e706e67)
