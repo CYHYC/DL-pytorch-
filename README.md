@@ -19,7 +19,7 @@
 ## 3. LSGAN
 - Least Square Generative Adversarial Networks
 - 기존의 GAN의 Discriminator 사용하던 Binary(sigmoid) cross entropy loss function을 L2 loss(Least square loss)로 적용
-- BCE loss는 D(z) >> 1 이여도 log(D(z))는 1로 수렴하게 되어, 가짜 이미지가 Descriminator를 진짜라고 판별해도 진짜 이미지가 아닌 pearson divergence가 발생
+- BCE loss는 D(z) >> 1 이여도 log(D(z))는 1로 수렴하게 되어, 가짜 이미지가 Discriminator를 진짜라고 판별해도 진짜 이미지가 아닌 pearson divergence가 발생
 - L2 loss를 적용함으로써 D(z) >> 1 일 때 Loss가 커지게 설계함으로써 pearson divergence를 방지함
 
 
