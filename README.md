@@ -37,3 +37,21 @@
 - Discriminator는 조건에 맞는 이미지인지를 판단함(GAN의 경우 이미지가 진짜/가짜 인지만 구분)
 
 ![](https://camo.githubusercontent.com/c28a6315c9c2f6bcad02c9e0e99f8ae6ff9403ef/68747470733a2f2f626c6f672e6b616b616f63646e2e6e65742f646e2f434d5950652f627471786a3047344e68342f727a57524653307a7735344c68314d79685a3437414b2f696d672e706e67)
+
+## 5. pix2pix
+- CGAN으로 pair로 되어있는 데이터 셋을 사용해서 image translation 하는 방법
+- image to image, text to image 등 pair dataset을 사용하여 다양한 output들을 만들어 낼 수 있음
+- Generator loss로 Discriminator를 속이는 GAN loss와 Generator를 통해 생성된 image와 실제 image를 비교하는 L1 loss를 사용함
+
+- Network 구조
+![](https://taeoh-kim.github.io/img/code2.PNG)
+  - Discriminator : patch GAN 사용
+    - patch GAN? : 기존에 DCGAN이나 CGAN 은 이미지 전체를 1개로 두고 real or fake의 확률을 계산한 loss를 사용했는데, image를 N x N 의 patch 단위로 나누어서 real or fake를 보겠다는 것 → image를 분할하여 학습시킴으로써 조금더 디테일한 학습결과가 나타남
+
+  - Generator : Unet 사용
+![](https://taeoh-kim.github.io/img/code1.PNG)
+    - Unet : encoder - decoder 구조에서 downsampling할 때 정보 손실이 발생하는데, 이를 보완하기 위해 downsampling 하는 중간중간 feature map을 upsampling layer에 전달함으로 정보 손실을 보완함
+    
+ 
+![](https://taeoh-kim.github.io/img/img4-2.PNG)
+
