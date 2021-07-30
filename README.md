@@ -48,10 +48,30 @@
   - Discriminator : patch GAN 사용
     - patch GAN? : 기존에 DCGAN이나 CGAN 은 이미지 전체를 1개로 두고 real or fake의 확률을 계산한 loss를 사용했는데, image를 N x N 의 patch 단위로 나누어서 real or fake를 보겠다는 것 → image를 분할하여 학습시킴으로써 조금더 디테일한 학습결과가 나타남
 
-  - Generator : Unet 사용
+  - Generator : UNet 사용
 ![](https://taeoh-kim.github.io/img/code1.PNG)
-    - Unet : encoder - decoder 구조에서 downsampling할 때 정보 손실이 발생하는데, 이를 보완하기 위해 downsampling 하는 중간중간 feature map을 upsampling layer에 전달함으로 정보 손실을 보완함
+    - UNet : encoder - decoder 구조에서 downsampling할 때 정보 손실이 발생하는데, 이를 보완하기 위해 downsampling 하는 중간중간 feature map을 upsampling layer에 전달함으로 정보 손실을 보완함
     
  
 ![](https://taeoh-kim.github.io/img/img4-2.PNG)
+
+
+## 6. CyCle GAN
+- pix2pix의 경우 pair dataset으로 translation하는 방법 → 데이터 취득이 쉽지 않음
+- unpair dataset에서 데이터의 스타일만 가져와 translation 하는 방법 → Cycle GAN의 Main idea
+![](https://raw.githubusercontent.com/dimitreOliveira/MachineLearning/master/Kaggle/I%E2%80%99m%20Something%20of%20a%20Painter%20Myself/cyclegan_horse-zebra.jpg)
+
+### Cycle GAN의 구조
+![](https://hardikbansal.github.io/CycleGANBlog/images/model.jpg)
+- X-domain → Y-domain으로의 변환해주는 1개의 Generator : GAN model
+- X-domain → Y-domain → X-domin 으로 다시 돌아오는 2개의 Generator : Cycle GAN model
+
+![](https://miro.medium.com/max/2000/1*YOhXT4gecyVgpMQHsrIvsw.png)
+
+- Discriminator는 pix2pix와 동일하게 patct GAN을 사용함
+- Generator는 ResNet을 사용
+![](https://miro.medium.com/max/875/1*PVBSmRcCz9xfw-fCNi_q5g.png)
+  - 단순 Encoder-Decoder 모델 보다 Encoder의 중간 정보를 Decoder로 전달해주는 UNet이 유리하지만, bottleneck 구조는 정보 손실이 발생할 수 밖에 없음
+
+- Loss Function
 
