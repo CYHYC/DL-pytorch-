@@ -70,8 +70,16 @@
 
 - Discriminator는 pix2pix와 동일하게 patct GAN을 사용함
 - Generator는 ResNet을 사용
-![](https://miro.medium.com/max/875/1*PVBSmRcCz9xfw-fCNi_q5g.png)
+![](https://www.lyrn.ai/wp-content/uploads/2019/01/CycleGAN-arch.png)
   - 단순 Encoder-Decoder 모델 보다 Encoder의 중간 정보를 Decoder로 전달해주는 UNet이 유리하지만, bottleneck 구조는 정보 손실이 발생할 수 밖에 없음
 
 - Loss Function
+- Cycle consistency loss : Generator를 통해 생성된 Y이미지가 실제 Y이미지와 같은지 비교
 
+$ Loss_{cycle} = |G(X) - Y| + |F(Y) - X|$
+
+- GAN Loss : Generator를 통해 생성된 이미지를 Dicriminator에서 참으로 학습하게 함
+
+$ Loss_{GAN} = log(D(G(X)) + log(D(F(Y)) $
+
+- Identity Loss
