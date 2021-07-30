@@ -13,6 +13,7 @@
 2. CNN model과 비슷하지만, pooling layer는 사용하지 않음
 3. FC layer 사용하지 않음
 
-## 2. ㅣ
-3. FC layer 사용하지 않ㅣ
-3. FC layer 사용하지 않
+## 2. Latent vector
+![](https://greeksharifa.github.io/public/img/2019-03-18-DCGAN/06.png)
+- 학습된 모델에 z값을 바꿔가면서 생성된 이미지를 관찰해보면 Latent vector의 의미를 파악할 수 있게됨
+- z 벡터의 연산, interpolation 등을 통해서 원하는 이미지 생성 가능
